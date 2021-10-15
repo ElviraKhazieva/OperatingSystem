@@ -12,9 +12,10 @@ for i in range(n):
 		break
 	child = os.fork()
 if child > 0 :
-	print('im waiting')
-	ret = os.wait()
-	print(f"Child process {ret[0]} finished with code {ret[1]}")
+	for i in range(0, n):
+		print('im waiting')
+		ret = os.wait()
+		print(f"Child process {ret[0]} finished with code {ret[1]}")
 else:
 	os.execl('child.py', "child.py", str(random.choice(range(5, 10))))
 
